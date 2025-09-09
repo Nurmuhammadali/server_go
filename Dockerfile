@@ -2,8 +2,8 @@
 FROM golang:1.24.6-alpine AS builder
 WORKDIR /app
 
-COPY go.mod ./
-RUN go mod tidy       # go.sum shu yerda hosil bo‘ladi
+COPY go.mod go.sum ./
+RUN go mod download
 
 COPY . .
 RUN go build -o server server.go
